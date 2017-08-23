@@ -1,0 +1,57 @@
+# babel dist
+/lib
+
+# Numerous always-ignore extensions
+*.bak
+*.patch
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
+*.sass-cache
+*.lock
+*.rdb
+*.db
+nohup.out
+.nyc_output
+coverage.lcov
+package-lock.json
+
+# OS or Editor folders
+.DS_Store
+._*
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+nbproject
+thumbs.db
+
+# Folders to ignore
+.hg
+.svn
+.CVS
+.idea
+node_modules
+old/
+*-old/
+*-notrack/
+no-track/
+build/
+combo/
+reference/
+jscoverage_lib/
+temp/
+tmp/
+
+# codecov.io
+coverage/
