@@ -1,10 +1,10 @@
 {
   'targets': [
     {
-      'target_name': 'penteract-native',
+      'target_name': 'penteract',
       'sources': [ 'src/penteract.cc' ],
-      'include_dirs': ["<!@(node -p \"require('node-addon-api').include\")"],
-      'dependencies': ["<!(node -p \"require('node-addon-api').gyp\")"],
+      'include_dirs': [],
+      'dependencies': [],
       'cflags!': [ '-fno-exceptions' ],
       'cflags_cc!': [ '-fno-exceptions' ],
       'xcode_settings': {

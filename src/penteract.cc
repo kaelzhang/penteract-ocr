@@ -1,40 +1,22 @@
-#include "penteract.h"
+#include <node_api.h>
+#include <assert.h>
 
-using namespace Napi;
-
-void Penteract::Initialize(Napi::Env& env, Object& target) {
-    Napi::Function constructor = DefineClass(env, "Penteract", {
-        InstanceMethod("greet", &Penteract::Greet)
-    });
-
-    target.Set("Penteract", constructor);
+napi_value Method(napi_env env, napi_callback_info info) {
+  napi_status status;
+  napi_value world;
+  status = napi_create_string_utf8(env, "world", 5, &world);
+  assert(status == napi_ok);
+  return world;
 }
 
-Napi::Value Penteract::Greet(const Napi::CallbackInfo& info) {
-    if (!info[0].IsString())
-    {
-        throw Error::New(info.Env(), "You need to introduce yourself to greet");
-    }
+#define DECLARE_NAPI_METHOD(name, func)                          \
+  { name, 0, func, 0, 0, 0, napi_default, 0 }
 
-    String name = info[0].As<String>();
-
-    printf("Hello %s\n", name.Utf8Value().c_str());
-    printf("I am %s\n", this->_greeterName.Value().Utf8Value().c_str());
-
-    return this->_greeterName.Value();
+void Init(napi_env env, napi_value exports, napi_value module, void* priv) {
+  napi_status status;
+  napi_property_descriptor desc = DECLARE_NAPI_METHOD("hello", Method);
+  status = napi_define_properties(env, exports, 1, &desc);
+  assert(status == napi_ok);
 }
 
-Penteract::Penteract(const Napi::CallbackInfo& info) {
-    if (!info[0].IsString())
-    {
-        throw Error::New(info.Env(), "You must name me");
-    }
-
-    this->_greeterName = Persistent(info[0].As<String>());
-}
-
-void Init(Env env, Object exports, Object module) {
-    Penteract::Initialize(env, exports);
-}
-
-NODE_API_MODULE(addon, Init)
+NAPI_MODULE(hello, Init)
