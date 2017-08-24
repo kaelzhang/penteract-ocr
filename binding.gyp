@@ -3,7 +3,7 @@
     {
       'target_name': 'penteract',
       'sources': [
-        'src/penteract.cc'
+        'cc/penteract.cc'
       ],
       'include_dirs': [
         '<!@(pkg-config tesseract --cflags-only-I | sed s/-I//g)',

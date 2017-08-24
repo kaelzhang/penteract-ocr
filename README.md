@@ -24,13 +24,13 @@ ATTENSION that this package is still Working In Progress, and
 
 ## Install
 
-1. Before install node.js penteract, the following dependencies should be installed
+Before install node.js penteract, the following dependencies should be installed
 
 ```sh
 brew install pkg-config tesseract
 ```
 
-2. Then npm install
+Then npm install
 
 ```sh
 $ npm install penteract

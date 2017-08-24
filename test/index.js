@@ -1,5 +1,5 @@
 import test from 'ava'
-import penteract from '..'
+import penteract from '../src'
 import path from 'path'
 
 
