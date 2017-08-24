@@ -2,13 +2,13 @@
 #include <assert.h>
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
-// #include "converter.h"
+
+
+// JavaScript API:
+// penteract.fromFile(filepath: String, lang: String) : String
 
 napi_value FromFile(napi_env env, napi_callback_info info) {
   napi_status status;
-
-  //
-  // penteract.fromFile(filepath, lang)
 
   // Arguments
   /////////////////////////////////////////////////////////////////////////////
