@@ -49,9 +49,11 @@
     "tesseract",
     "ocr",
     "c++",
-    "",
     "penteract",
-    "n-api"
+    "n-api",
+    "ocr-engine",
+    "tesseract-ocr",
+    "optical-character-recognition"
   ],
   "author": "kael",
   "license": "MIT",
