@@ -23,8 +23,6 @@
   },
   "scripts": {
     "build": "node-gyp build",
-    "// build": "BABEL_ENV=production babel src --out-dir lib",
-    "// test": "node --napi-modules ./test/test_binding.js",
     "test": "node --napi-modules ./node_modules/.bin/ava --verbose --timeout=10s",
     "prepublish": "npm run build",
     "report-cov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
@@ -54,6 +52,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kaelzhang/napi-penteract/issues"
+  },
+  "engine": {
+    "node": ">=8.3.0"
   },
   "homepage": "https://github.com/kaelzhang/napi-penteract#readme"
 }

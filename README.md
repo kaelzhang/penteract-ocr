@@ -19,6 +19,14 @@ The node.js wrapper of Tesseract OCR using N-API
 
 ## Install
 
+1. Before install node.js penteract, the following dependencies should be installed
+
+```sh
+brew install pkg-config tesseract
+```
+
+2. Then npm install
+
 ```sh
 $ npm install penteract
 ```
@@ -26,7 +34,7 @@ $ npm install penteract
 ## Usage
 
 ```js
-const penteract = require('napi-penteract')
+import penteract from 'penteract'
 ```
 
 ## License

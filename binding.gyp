@@ -2,8 +2,15 @@
   'targets': [
     {
       'target_name': 'penteract',
-      'sources': [ 'src/penteract.cc' ],
-      'include_dirs': [],
+      'sources': [
+        'src/penteract.cc'
+      ],
+      'include_dirs': [
+        '<!@(pkg-config tesseract --cflags-only-I | sed s/-I//g)',
+      ],
+      'libraries': [
+        '<!@(pkg-config tesseract --libs)'
+      ],
       'dependencies': [],
       'cflags!': [ '-fno-exceptions' ],
       'cflags_cc!': [ '-fno-exceptions' ],
