@@ -15,7 +15,12 @@
 
 # penteract
 
-The node.js wrapper of Tesseract OCR using N-API
+The node.js wrapper of Tesseract OCR using N-API.
+
+ATTENSION that this package is still Working In Progress, and
+
+- only support node.js >= 8.3.0 (for the api changes of N-API)
+- only support Mac OS X for now. 
 
 ## Install
 
