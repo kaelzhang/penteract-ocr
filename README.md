@@ -20,7 +20,7 @@ The node.js wrapper of Tesseract OCR using N-API.
 ATTENSION that this package is still Working In Progress, and
 
 - only support node.js >= 8.3.0 (for the api changes of N-API)
-- only support Mac OS X for now. 
+- only support Mac OS X for now.
 
 ## Install
 
@@ -39,7 +39,14 @@ $ npm install penteract
 ## Usage
 
 ```js
-import penteract from 'penteract'
+import {
+  fromFile
+} from 'penteract'
+
+const filepath = path.join(__dirname, 'test', 'fixtures', 'penteract.jpg')
+
+const result = fromFile(filepath, 'eng')
+// 'penteract'
 ```
 
 ## License

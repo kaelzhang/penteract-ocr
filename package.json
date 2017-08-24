@@ -1,6 +1,6 @@
 {
   "name": "penteract",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "lib/binding.js",
   "devDependencies": {
     "ava": "^0.16.0",
