@@ -22,6 +22,8 @@ ATTENSION that this package is still Working In Progress, and
 - only support node.js >= 8.3.0 (for the api changes of N-API)
 - only support Mac OS X for now.
 
+**And this project needs an C/C++ developer to help out!** Open an issue if you're interested in contributing.
+
 ## Install
 
 Before install node.js penteract, the following dependencies should be installed
@@ -38,16 +40,48 @@ $ npm install penteract
 
 ## Usage
 
+### Recognize an image buffer
+
 ```js
 import {
-  fromFile
+  recognize
+} from 'penteract'
+
+import fs from 'fs-extra'
+
+fs.readFile(filepath).then(recognize).then(console.log)
+// 'penteract'
+```
+
+### Recognize a local file
+
+```js
+import {
+  fromFileSync
 } from 'penteract'
 
 const filepath = path.join(__dirname, 'test', 'fixtures', 'penteract.jpg')
 
-const result = fromFile(filepath, 'eng')
-// 'penteract'
+try {
+  const result = fromFileSync(filepath, 'eng')
+  console.log(result)    
+  // 'penteract'
+
+} catch (e) {
+}
 ```
+
+## fromFileSync(filepath)
+
+- **filepath** `Path`
+
+Returns `String` the recognized text.
+
+## recognize(image)
+
+- **image** `Buffer`
+
+Returns `Promise.<String>`
 
 ## License
 
