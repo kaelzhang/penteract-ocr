@@ -1,13 +1,13 @@
 #include <node_api.h>
 #include <assert.h>
-#include <tesseract/baseapi.h>
-#include <leptonica/allheaders.h>
+#include "ocr.h"
 
 
 // JavaScript API:
 // penteract.fromFile(filepath: String, lang: String) : String
 
-napi_value FromFile(napi_env env, napi_callback_info info) {
+napi_value
+FromFile(napi_env env, napi_callback_info info) {
   napi_status status;
 
   // Arguments
@@ -56,27 +56,21 @@ napi_value FromFile(napi_env env, napi_callback_info info) {
                                       &size_written);
   assert(status == napi_ok);
 
-
-  // OCR
-  /////////////////////////////////////////////////////////////////////////////
-  tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
-
-  // Initialize tesseract-ocr with English, without specifying tessdata path
-  if (api->Init(NULL, lang)) {
-    fprintf(stderr, "Could not initialize tesseract.\n");
-    exit(1);
-  }
-
   // Open input image with leptonica library
   Pix *image = pixRead(filepath);
-  api->SetImage(image);
 
-  // Get OCR result
-  char *outText = api->GetUTF8Text();
+  char *outText = nullptr;
+  char *error_code = nullptr;
+  char *error_message = nullptr;
+  int tess_failed = TessRecognizePix(image, lang, outText, NULL,
+                                     error_code, error_message);
 
-  // Destroy used object and release memory
-  api->End();
   pixDestroy(&image);
+
+  if (tess_failed) {
+    napi_throw_type_error(env, error_code, error_message);
+    return nullptr;
+  }
 
   napi_value returnValue;
   status = napi_create_string_utf8(env, outText, strlen(outText), &returnValue);
@@ -91,7 +85,8 @@ napi_value FromFile(napi_env env, napi_callback_info info) {
   { name, 0, func, 0, 0, 0, napi_default, 0 }
 
 
-void Init(napi_env env, napi_value exports, napi_value module, void* priv) {
+void
+Init(napi_env env, napi_value exports, napi_value module, void* priv) {
   napi_status status;
 
   napi_property_descriptor from_file_desc = DECLARE_NAPI_METHOD("fromFile", FromFile);
