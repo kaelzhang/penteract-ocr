@@ -40,7 +40,7 @@ $ npm install penteract
 
 ## Usage
 
-### Recognize an image buffer
+### Recognize an Image Buffer
 
 ```js
 import {
@@ -49,39 +49,49 @@ import {
 
 import fs from 'fs-extra'
 
+const filepath = path.join(__dirname, 'test', 'fixtures', 'penteract.jpg')
+
 fs.readFile(filepath).then(recognize).then(console.log)
 // 'penteract'
 ```
 
-### Recognize a local file
+### From a Readable Stream
+
+```js
+const stream = fs.createReadStream(filepath)
+recognize(stream).then(console.log)
+```
+
+### Recognize a Local Image File
 
 ```js
 import {
   fromFileSync
 } from 'penteract'
 
-const filepath = path.join(__dirname, 'test', 'fixtures', 'penteract.jpg')
-
 try {
   const result = fromFileSync(filepath, 'eng')
-  console.log(result)    
+  console.log(result)
   // 'penteract'
 
 } catch (e) {
 }
 ```
 
-## fromFileSync(filepath)
+## recognize(image [, options])
 
-- **filepath** `Path`
-
-Returns `String` the recognized text.
-
-## recognize(image)
-
-- **image** `Buffer`
+- **image** `Buffer|Stream.Readable`
+- **options** `Object=`
+  - **lang** `(String|Array.<String>)=eng` specify language(s) used for OCR. Run `tesseract --list-langs` in command line for all supported languages. Defaults to `'eng'`.
 
 Returns `Promise.<String>`
+
+## fromFileSync(filepath [, options])
+
+- **filepath** `Path`
+- **options**
+
+Returns `String` the recognized text.
 
 ## License
 
