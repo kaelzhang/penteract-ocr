@@ -70,7 +70,7 @@ import {
 } from 'penteract'
 
 try {
-  const result = fromFileSync(filepath, 'eng')
+  const result = fromFileSync(filepath, {lang: 'eng'})
   console.log(result)
   // 'penteract'
 
