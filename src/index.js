@@ -17,20 +17,20 @@ const handleOptions = ({
   }
 }
 
-export function fromFile (filepath, options) {
-  options = handleOptions(options)
 
-  return bindings.fromFile(filepath, options.lang)
+const makePromise = (method) => {
+  return (arg, options) => new Promise((resolve, reject) => {
+    options = handleOptions(options)
+
+    bindings[method](arg, options.lang, (err, text) => {
+      if (err) {
+        return reject(err)
+      }
+
+      resolve(text)
+    })
+  })
 }
 
-
-export function recognize (buffer, options) {
-  options = handleOptions(options)
-
-  try {
-    const result = bindings.recognize(buffer, options.lang)
-    return Promise.resolve(result)
-  } catch (e) {
-    return Promise.reject(e)
-  }
-}
+export const fromFile = makePromise('fromFile')
+export const recognize = makePromise('recognize')

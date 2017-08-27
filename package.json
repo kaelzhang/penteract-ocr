@@ -1,6 +1,6 @@
 {
   "name": "penteract",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "main": "lib/index.js",
   "module": "src/index.js",
   "devDependencies": {
@@ -29,6 +29,7 @@
     "build": "npm run build-cc && npm run build-js",
     "build-cc": "node-gyp build",
     "build-js": "BABEL_ENV=production babel src --out-dir lib",
+    "// test": "lldb -- /usr/local/bin/node ./node_modules/.bin/ava --verbose --timeout=10s",
     "test": "ava --verbose --timeout=10s",
     "prepublish": "npm run build",
     "report-cov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"

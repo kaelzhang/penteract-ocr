@@ -1,5 +1,5 @@
-#ifndef __PENTERACT_FROM_FILE_H__
-#define __PENTERACT_FROM_FILE_H__
+#ifndef __PENTERACT_RECOGNIZE_H__
+#define __PENTERACT_RECOGNIZE_H__
 
 #include <nan.h>
 

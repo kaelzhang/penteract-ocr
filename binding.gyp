@@ -5,7 +5,8 @@
       'sources': [
         'cc/penteract.cc',
         'cc/ocr.cc',
-        'cc/fromFile.cc'
+        'cc/fromFile.cc',
+        'cc/recognize.cc'
       ],
       'include_dirs': [
         '<!(node -e "require(\'nan\')")',

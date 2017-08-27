@@ -1,6 +1,7 @@
 #include <nan.h>
 #include <stdint.h>
 #include "fromFile.h"
+#include "recognize.h"
 
 
 using Nan::New;
@@ -13,8 +14,9 @@ NAN_MODULE_INIT(Init) {
       New<String>("fromFile").ToLocalChecked(),
       New<FunctionTemplate>(FromFile)->GetFunction());
 
-  // exports->Set(New("recognize").ToLocalChecked(),
-  //              New<v8::FunctionTemplate>(Recognize)->GetFunction());
+  Set(target,
+      New<String>("recognize").ToLocalChecked(),
+      New<FunctionTemplate>(Recognize)->GetFunction());
 }
 
 
