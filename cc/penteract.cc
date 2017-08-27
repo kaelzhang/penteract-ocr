@@ -34,7 +34,7 @@ _recognizePix (napi_env env, Pix *image, const char *lang) {
 // penteract.fromFile(filepath: String, lang: String) : String
 
 napi_value
-FromFile(napi_env env, napi_callback_info info) {
+FromFileSync(napi_env env, napi_callback_info info) {
   napi_status status;
 
   // Arguments
@@ -157,11 +157,13 @@ void
 Init(napi_env env, napi_value exports, napi_value module, void* priv) {
   napi_status status;
 
-  napi_property_descriptor from_file_desc = DECLARE_NAPI_METHOD("fromFile", FromFile);
+  napi_property_descriptor from_file_desc =
+  DECLARE_NAPI_METHOD("fromFileSync", FromFileSync);
   status = napi_define_properties(env, exports, 1, &from_file_desc);
   assert(status == napi_ok);
 
-  napi_property_descriptor recognize_desc = DECLARE_NAPI_METHOD("recognize", Recognize);
+  napi_property_descriptor recognize_desc =
+  DECLARE_NAPI_METHOD("recognize", Recognize);
   status = napi_define_properties(env, exports, 1, &recognize_desc);
   assert(status == napi_ok);
 }
