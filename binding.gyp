@@ -4,9 +4,11 @@
       'target_name': 'penteract',
       'sources': [
         'cc/penteract.cc',
-        'cc/ocr.cc'
+        'cc/ocr.cc',
+        'cc/fromFile.cc'
       ],
       'include_dirs': [
+        '<!(node -e "require(\'nan\')")',
         '<!@(pkg-config tesseract --cflags-only-I | sed s/-I//g)',
       ],
       'libraries': [

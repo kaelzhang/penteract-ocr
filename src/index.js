@@ -1,4 +1,4 @@
-import bindings from './binding'
+import bindings from '../build/Release/penteract'
 
 
 const DEFAULT_LANG = 'eng'
@@ -17,10 +17,10 @@ const handleOptions = ({
   }
 }
 
-export function fromFileSync (filepath, options) {
+export function fromFile (filepath, options) {
   options = handleOptions(options)
 
-  return bindings.fromFileSync(filepath, options.lang)
+  return bindings.fromFile(filepath, options.lang)
 }
 
 

@@ -9,6 +9,8 @@ int TessRecognizePix (Pix *image,
 
   int failed = api->Init(datapath, lang);
   if (failed) {
+    pixDestroy(&image);
+
     const char *code = "TESSER_INIT_ERROR";
     const char *message = "Could not initialize tesseract.";
     strcpy(error_code, code);
@@ -18,6 +20,7 @@ int TessRecognizePix (Pix *image,
   }
 
   api->SetImage(image);
+  pixDestroy(&image);
 
   // Get OCR result
   outText = api->GetUTF8Text();
