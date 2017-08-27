@@ -1,16 +1,16 @@
-[![Build Status](https://travis-ci.org/kaelzhang/napi-penteract.svg?branch=master)](https://travis-ci.org/kaelzhang/napi-penteract)
-[![Coverage](https://codecov.io/gh/kaelzhang/napi-penteract/branch/master/graph/badge.svg)](https://codecov.io/gh/kaelzhang/napi-penteract)
+[![Build Status](https://travis-ci.org/kaelzhang/node-penteract.svg?branch=master)](https://travis-ci.org/kaelzhang/node-penteract)
+[![Coverage](https://codecov.io/gh/kaelzhang/node-penteract/branch/master/graph/badge.svg)](https://codecov.io/gh/kaelzhang/node-penteract)
 <!-- optional appveyor tst
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/kaelzhang/napi-penteract?branch=master&svg=true)](https://ci.appveyor.com/project/kaelzhang/napi-penteract)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/kaelzhang/node-penteract?branch=master&svg=true)](https://ci.appveyor.com/project/kaelzhang/node-penteract)
 -->
 <!-- optional npm version
-[![NPM version](https://badge.fury.io/js/napi-penteract.svg)](http://badge.fury.io/js/napi-penteract)
+[![NPM version](https://badge.fury.io/js/node-penteract.svg)](http://badge.fury.io/js/node-penteract)
 -->
 <!-- optional npm downloads
-[![npm module downloads per month](http://img.shields.io/npm/dm/napi-penteract.svg)](https://www.npmjs.org/package/napi-penteract)
+[![npm module downloads per month](http://img.shields.io/npm/dm/node-penteract.svg)](https://www.npmjs.org/package/node-penteract)
 -->
 <!-- optional dependency status
-[![Dependency Status](https://david-dm.org/kaelzhang/napi-penteract.svg)](https://david-dm.org/kaelzhang/napi-penteract)
+[![Dependency Status](https://david-dm.org/kaelzhang/node-penteract.svg)](https://david-dm.org/kaelzhang/node-penteract)
 -->
 
 # penteract

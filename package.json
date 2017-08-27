@@ -37,7 +37,7 @@
   "description": "The node.js wrapper of Tesseract OCR using N-API",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaelzhang/napi-penteract.git"
+    "url": "git+https://github.com/kaelzhang/node-penteract.git"
   },
   "ava": {
     "require": "babel-register",
@@ -61,10 +61,10 @@
   "author": "kael",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kaelzhang/napi-penteract/issues"
+    "url": "https://github.com/kaelzhang/node-penteract/issues"
   },
   "engine": {
     "node": ">=8.3.0"
   },
-  "homepage": "https://github.com/kaelzhang/napi-penteract#readme"
+  "homepage": "https://github.com/kaelzhang/node-penteract#readme"
 }
