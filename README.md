@@ -23,6 +23,8 @@ Contributions are welcome.
 
 ## Install
 
+First of all, a g++ 4.9 compiler is required.
+
 Before install `penteract`, the following dependencies should be installed
 
 ```sh
@@ -32,7 +34,7 @@ $ brew install pkg-config tesseract # mac os
 Then npm install
 
 ```sh
-$ npm install penteract@latest # the version using nan
+$ npm install penteract
 ```
 
 ### To use with Electron
@@ -71,8 +73,7 @@ import fs from 'fs-extra'
 
 const filepath = path.join(__dirname, 'test', 'fixtures', 'penteract.jpg')
 
-fs.readFile(filepath).then(recognize).then(console.log)
-// 'penteract'
+fs.readFile(filepath).then(recognize).then(console.log) // 'penteract'
 ```
 
 ### Recognize a Local Image File
@@ -82,21 +83,20 @@ import {
   fromFile
 } from 'penteract'
 
-fromFile(filepath, {lang: 'eng'}).then(console.log)
-// 'penteract'
+fromFile(filepath, {lang: 'eng'}).then(console.log)     // 'penteract'
 ```
 
 ## recognize(image [, options])
 
-- **image** `Buffer`
-- **options** `PenteractOptions=`
+- **image** `Buffer` the content buffer of the image file.
+- **options** `PenteractOptions=` optional
 
 Returns `Promise.<String>`
 
-## fromFileSync(filepath [, options])
+## fromFile(filepath [, options])
 
-- **filepath** `Path`
-- **options**
+- **filepath** `Path` the file path of the image file.
+- **options** `PenteractOptions=`
 
 Returns `Promise.<String>` the recognized text.
 
