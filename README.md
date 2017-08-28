@@ -34,7 +34,19 @@ Then npm install
 ```sh
 $ npm install penteract@latest # the version using nan
 $ npm install penteract@n-api  # the version using n-api
+```
 
+### Used with Electron
+
+Due to the limitation of node native modules, if you want to use `penteract` with electron, add a `.npmrc` file to the root of your electron project, before `npm install`:
+
+```ini
+runtime = electron
+; the version of the local electron,
+; use `npm ls electron` to figure out the version
+target = 1.7.5
+target_arch = x64
+disturl = https://atom.io/download/atom-shell
 ```
 
 ## Usage
@@ -52,13 +64,6 @@ const filepath = path.join(__dirname, 'test', 'fixtures', 'penteract.jpg')
 
 fs.readFile(filepath).then(recognize).then(console.log)
 // 'penteract'
-```
-
-### From a Readable Stream
-
-```js
-const stream = fs.createReadStream(filepath)
-recognize(stream).then(console.log)
 ```
 
 ### Recognize a Local Image File
