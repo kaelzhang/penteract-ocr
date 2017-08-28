@@ -24,7 +24,9 @@ const makePromise = (method) => {
 
     bindings[method](arg, options.lang, (err, text) => {
       if (err) {
-        return reject(err)
+        const error = new Error(text)
+        error.code = err
+        return reject(error)
       }
 
       resolve(text.trim())
