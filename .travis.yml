@@ -1,6 +1,7 @@
 language: node_js
-sudo: false
+sudo: required
 node_js:
+  - "7"
   - "8"
 addons:
   apt:
@@ -9,6 +10,9 @@ addons:
     packages:
       - tesseract-ocr
       - g++-4.9
+os:
+  - osx
+
 env:
   - CXX=g++-4.9
 before_install:

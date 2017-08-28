@@ -43,8 +43,8 @@ Due to the limitation of node native modules, if you want to use `penteract` wit
 
 ```ini
 runtime = electron
-; the version of the local electron,
-; use `npm ls electron` to figure out the version
+; The version of the local electron,
+; use `npm ls electron` to figure it out
 target = 1.7.5
 target_arch = x64
 disturl = https://atom.io/download/atom-shell
@@ -91,24 +91,86 @@ fromFile(filepath, {lang: 'eng'}).then(console.log)     // 'penteract'
 - **image** `Buffer` the content buffer of the image file.
 - **options** `PenteractOptions=` optional
 
-Returns `Promise.<String>`
+Returns `Promise.<String>` the recognized text if succeeded.
 
 ## fromFile(filepath [, options])
 
 - **filepath** `Path` the file path of the image file.
 - **options** `PenteractOptions=`
 
-Returns `Promise.<String>` the recognized text.
+Returns `Promise.<String>`
 
-## `PenteractOptions` `Object`
+### `PenteractOptions` `Object`
 
 
 ```js
 {
-  // type `(String|Array.<String>)=eng`,
-  // Specifies language(s) used for OCR. Run `tesseract --list-langs` in command line for all supported languages. Defaults to `'eng'`.
+  // @type `(String|Array.<String>)=eng`,
+  //
+  // Specifies language(s) used for OCR.
+  //   Run `tesseract --list-langs` in command line for all supported languages.
+  //   Defaults to `'eng'`.
+  //
+  // To specify multiple languages, use an array.
+  //   English and Simplified Chinese, for example:
+  // ```
+  // lang: ['eng', 'chi_sim']
+  // ```
   lang: 'eng'
 }
+```
+
+## `Promise.reject(error)`
+
+- **error** `Error` The JavaScript `Error` instance
+  - **code** `String` Error code.
+  - **message** `String` Error message.
+  - other properties of `Error`.
+
+### code: `ERR_READ_IMAGE`
+
+Rejects if it fails to read image data from file or buffer.
+
+### code: `ERR_INIT_TESSER`
+
+Rejects if tesseract fails to initialize
+
+## Example of Using with Electron
+
+```js
+// For details of `mainWindow: BrowserWindow`, see
+// https://github.com/electron/electron/blob/master/docs/api/browser-window.md
+mainWindow.capturePage({
+  x: 10,
+  y: 10,
+  width: 100,
+  height: 10
+
+}, (data) => {
+  recognize(data.toPNG()).then(console.log)
+})
+```
+
+## Compiling Troubles
+
+- For Mac OS users, if you are experiencing trouble when compiling, run the following command:
+
+```sh
+$ xcode-select --install
+```
+
+will resolve most problems.
+
+- Warnings:
+
+```
+xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance
+```
+
+resolver:
+
+```sh
+$ sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 ```
 
 ## License
