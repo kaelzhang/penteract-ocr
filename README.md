@@ -15,7 +15,7 @@
 
 # penteract
 
-The node.js wrapper of Tesseract OCR using N-API.
+The native Node.js bindings to the [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) project.
 
 ATTENSION that this package is still Working In Progress, and only support Mac OS X for now.
 
@@ -23,20 +23,19 @@ Contributions are welcome.
 
 ## Install
 
-Before install node.js penteract, the following dependencies should be installed
+Before install `penteract`, the following dependencies should be installed
 
 ```sh
-brew install pkg-config tesseract
+$ brew install pkg-config tesseract # mac os
 ```
 
 Then npm install
 
 ```sh
 $ npm install penteract@latest # the version using nan
-$ npm install penteract@n-api  # the version using n-api
 ```
 
-### Used with Electron
+### To use with Electron
 
 Due to the limitation of node native modules, if you want to use `penteract` with electron, add a `.npmrc` file to the root of your electron project, before `npm install`:
 
@@ -48,6 +47,16 @@ target = 1.7.5
 target_arch = x64
 disturl = https://atom.io/download/atom-shell
 ```
+
+<!--
+
+### The N-API version of `penteract`
+
+The N-API version of `penteract` (penteract@n-api) is and will be remaining experimental before the feature of N-API stabilized in Node.js 8.0 and ported to older Node.js LTS lines ([via](https://medium.com/the-node-js-collection/n-api-next-generation-node-js-apis-for-native-modules-169af5235b06)).
+
+For now, it is recommended to use `penteract@latest`
+
+-->
 
 ## Usage
 
@@ -79,9 +88,8 @@ fromFile(filepath, {lang: 'eng'}).then(console.log)
 
 ## recognize(image [, options])
 
-- **image** `Buffer|Stream.Readable`
-- **options** `Object=`
-  - **lang** `(String|Array.<String>)=eng` specify language(s) used for OCR. Run `tesseract --list-langs` in command line for all supported languages. Defaults to `'eng'`.
+- **image** `Buffer`
+- **options** `PenteractOptions=`
 
 Returns `Promise.<String>`
 
@@ -91,6 +99,17 @@ Returns `Promise.<String>`
 - **options**
 
 Returns `Promise.<String>` the recognized text.
+
+## `PenteractOptions` `Object`
+
+
+```js
+{
+  // type `(String|Array.<String>)=eng`,
+  // Specifies language(s) used for OCR. Run `tesseract --list-langs` in command line for all supported languages. Defaults to `'eng'`.
+  lang: 'eng'
+}
+```
 
 ## License
 

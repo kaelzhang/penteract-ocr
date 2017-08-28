@@ -2,28 +2,22 @@
 #include <stdint.h>
 #include "recognize.h"
 #include "ocr.h"
+#include "AsyncWorker.h"
 
-using Nan::New;
+
 using Nan::Callback;
 using Nan::HandleScope;
-using Nan::Null;
-using Nan::AsyncWorker;
 using Nan::AsyncQueueWorker;
 
 
-class RecognizeWorker : public AsyncWorker {
+class RecognizeWorker : public PenteractWorker {
 
 private:
-  char *outText;
   uint8_t *buffer;
   size_t length;
-  char *lang = nullptr;
 
-  void SetLang (const char *l) {
-    delete[] lang;
-    size_t size = strlen(l) + 1;
-    lang = new char[size];
-    memcpy(lang, l, size);
+  Pix* ReadImage () {
+    return pixReadMem(buffer, length);
   }
 
 public:
@@ -31,42 +25,9 @@ public:
                   size_t length,
                   char *lang,
                   Callback *callback)
-    : AsyncWorker(callback), buffer(buffer), length(length) {
-
-      SetLang(lang);
-    }
+    : PenteractWorker(lang, callback), buffer(buffer), length(length) {}
 
   ~RecognizeWorker () {}
-
-  void Execute () {
-    printf("%zu", length);
-    Pix *image = pixReadMem(buffer, length);
-
-    char *error_code = nullptr;
-    char *error_message = nullptr;
-    int tess_failed = TessRecognizePix(image, lang,
-                                       outText, NULL,
-                                       error_code, error_message);
-
-    if (tess_failed) {
-      SetErrorMessage(error_message);
-      return;
-    }
-  }
-
-  // Executed when the async work is complete
-  // this function will be run inside the main event loop
-  // so it is safe to use V8 again
-  void HandleOKCallback () {
-    HandleScope scope;
-
-    v8::Local<v8::Value> argv[] = {
-      Null(),
-      New(outText, strlen(outText)).ToLocalChecked()
-    };
-
-    callback->Call(2, argv);
-  }
 };
 
 

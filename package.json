@@ -1,6 +1,8 @@
 {
   "name": "penteract",
-  "version": "0.3.1",
+  "version": "0.3.2",
+  "description": "The native Node.js bindings to the Tesseract OCR project.",
+  "gypfile": true,
   "main": "lib/index.js",
   "module": "src/index.js",
   "devDependencies": {
@@ -30,12 +32,10 @@
     "build-cc": "node-gyp build",
     "build-js": "BABEL_ENV=production babel src --out-dir lib",
     "// test": "lldb -- /usr/local/bin/node ./node_modules/.bin/ava --verbose --timeout=10s",
-    "test": "ava --verbose --timeout=10s",
+    "test": "npm run build-cc && ava --verbose --timeout=10s",
     "prepublish": "npm run build",
     "report-cov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
-  "gypfile": true,
-  "description": "The node.js wrapper of Tesseract OCR using N-API",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kaelzhang/node-penteract.git"

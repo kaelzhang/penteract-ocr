@@ -27,7 +27,7 @@ const makePromise = (method) => {
         return reject(err)
       }
 
-      resolve(text)
+      resolve(text.trim())
     })
   })
 }

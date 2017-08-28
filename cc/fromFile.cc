@@ -1,75 +1,35 @@
 #include <nan.h>
 #include "fromFile.h"
 #include "ocr.h"
+#include "AsyncWorker.h"
 
-using Nan::New;
+
 using Nan::Callback;
 using Nan::HandleScope;
-using Nan::Null;
-using Nan::AsyncWorker;
 using Nan::AsyncQueueWorker;
 
 
-class FromFileWorker : public AsyncWorker {
+class FromFileWorker : public PenteractWorker {
 
 private:
-  char *outText;
-  char *filepath = nullptr;
-  char *lang = nullptr;
+  char *filepath_;
 
-  void SetFilepath (const char *f) {
-    delete[] filepath;
-    size_t size = strlen(f) + 1;
-    filepath = new char[size];
-    memcpy(filepath, f, size);
-  }
-
-  void SetLang (const char *l) {
-    delete[] lang;
-    size_t size = strlen(l) + 1;
-    lang = new char[size];
-    memcpy(lang, l, size);
+  Pix* ReadImage () {
+    return pixRead(filepath_);
   }
 
 public:
   FromFileWorker (char *filepath,
                   char *lang,
                   Callback *callback)
-    : AsyncWorker(callback) {
+    : PenteractWorker(lang, callback), filepath_(nullptr) {
 
-      SetFilepath(filepath);
-      SetLang(lang);
+      SetChar(&filepath_, filepath);
     }
 
-  ~FromFileWorker () {}
-
-  void Execute () {
-    Pix *image = pixRead(filepath);
-
-    char *error_code = nullptr;
-    char *error_message = nullptr;
-    int tess_failed = TessRecognizePix(image, lang,
-                                       outText, NULL,
-                                       error_code, error_message);
-
-    if (tess_failed) {
-      SetErrorMessage(error_message);
-      return;
-    }
-  }
-
-  // Executed when the async work is complete
-  // this function will be run inside the main event loop
-  // so it is safe to use V8 again
-  void HandleOKCallback () {
+  ~FromFileWorker () {
     HandleScope scope;
-
-    v8::Local<v8::Value> argv[] = {
-      Null(),
-      New(outText, strlen(outText)).ToLocalChecked()
-    };
-
-    callback->Call(2, argv);
+    delete[] filepath_;
   }
 };
 

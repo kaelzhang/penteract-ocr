@@ -11,7 +11,7 @@ int TessRecognizePix (Pix *image,
   if (failed) {
     pixDestroy(&image);
 
-    const char *code = "TESSER_INIT_ERROR";
+    const char *code = "ERR_INIT_TESSER";
     const char *message = "Could not initialize tesseract.";
     strcpy(error_code, code);
     strcpy(error_message, message);
