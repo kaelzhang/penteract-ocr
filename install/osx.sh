@@ -29,7 +29,14 @@ make_sure_packge() {
 
   if brew ls --versions "$package" > /dev/null; then
     log check "the version of $package"
-    brew outdated "$package" || brew install "$package" || brew upgrade "$package" || abort "fails to upgrade $package"
+
+    if brew outdated "$package" &> /dev/null; then
+      log "$package" "is up to date"
+    else
+      log updating "$package"
+      brew upgrade "$package"
+    fi
+
   else
     log install "$package"
     brew install "$package" || abort "fails to install $package"
@@ -45,3 +52,10 @@ pkg-config --version || abort "pkg-config is not installed"
 
 log tesseract --version
 tesseract --version || abort "tesseract is not installed"
+
+
+log npm "install -g node-gyp@latest"
+npm install -g node-gyp@latest || abort "fails to install node-gyp"
+
+log node-gyp --version
+node-gyp --version || abort "node-gyp is not installed"

@@ -12,10 +12,7 @@ node_js:
 #       - g++-4.9
 os:
   - osx
-env:
-  - CXX=g++-4.9
 before_install:
-  - npm install -g node-gyp@latest
   - bash install/osx.sh
 after_success:
   - npm run report-cov
