@@ -19,5 +19,7 @@ before_install:
   - brew update
   - brew outdated pkg-config || brew install pkg-config || brew upgrade pkg-config
   - brew outdated tesseract || brew install tesseract || brew upgrade tesseract
+  - pkg-config --version
+  - tesseract --version
 after_success:
   - npm run report-cov
