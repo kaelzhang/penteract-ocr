@@ -39,3 +39,15 @@ test('recognize', async t => {
   const result = await recognize(buffer)
   t.is(result, 'penteract')
 })
+
+
+test('recognize, multiple languages', async t => {
+  const buffer = await fs.readFile(penteract_jpg)
+  const result = await recognize(buffer, {
+    lang: [
+      'eng',
+      'chi_sim'
+    ]
+  })
+  t.is(result, 'penteract')
+})

@@ -32,7 +32,7 @@
     "build-cc": "node-gyp build",
     "build-js": "BABEL_ENV=production babel src --out-dir lib",
     "// test": "lldb -- /usr/local/bin/node ./node_modules/.bin/ava --verbose --timeout=10s",
-    "test": "npm run build-cc && ava --verbose --timeout=10s",
+    "test": "npm run build-cc && nyc ava --verbose --timeout=10s",
     "prepublish": "npm run build",
     "report-cov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
