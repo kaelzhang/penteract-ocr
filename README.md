@@ -37,7 +37,7 @@ Then npm install
 $ npm install penteract
 ```
 
-### To use with Electron
+### To Use with Electron
 
 Due to the limitation of node native modules, if you want to use `penteract` with electron, add a `.npmrc` file to the root of your electron project, before `npm install`:
 
@@ -153,7 +153,7 @@ mainWindow.capturePage({
 
 ## Compiling Troubles
 
-- For Mac OS users, if you are experiencing trouble when compiling, run the following command:
+For Mac OS users, if you are experiencing trouble when compiling, run the following command:
 
 ```sh
 $ xcode-select --install
@@ -161,7 +161,7 @@ $ xcode-select --install
 
 will resolve most problems.
 
-- Warnings:
+Warnings:
 
 ```
 xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance
