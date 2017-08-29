@@ -17,7 +17,10 @@
 
 The native Node.js bindings to the [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) project.
 
-ATTENSION that this package is still Working In Progress, and only support Mac OS X for now.
+<img align="right" alt="" src="https://raw.githubusercontent.com/kaelzhang/node-penteract/master/penteract.gif" />
+
+- Using Node.js bindings, avoid spawning `tesseract` command line.  
+- Asynchronous I/O: Image reading and processing in insulated event loop backed by [libuv](https://github.com/libuv/libuv).
 
 Contributions are welcome.
 
