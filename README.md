@@ -15,12 +15,13 @@
 
 # penteract
 
-The native Node.js bindings to the [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) project.
-
 <img align="right" alt="" src="https://raw.githubusercontent.com/kaelzhang/node-penteract/master/penteract.gif" />
+
+The native Node.js bindings to the [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) project.
 
 - Using Node.js bindings, avoid spawning `tesseract` command line.  
 - Asynchronous I/O: Image reading and processing in insulated event loop backed by [libuv](https://github.com/libuv/libuv).
+- Support to read image data from JavaScript `buffer`s.
 
 Contributions are welcome.
 
