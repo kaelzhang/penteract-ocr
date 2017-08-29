@@ -17,7 +17,7 @@ env:
 before_install:
   - npm install -g node-gyp@latest
   - brew update
-  - brew outdated pkg-config || brew install pkg-config
-  - brew outdated tesseract || brew install tesseract
+  - brew outdated pkg-config || brew install pkg-config || brew upgrade pkg-config
+  - brew outdated tesseract || brew install tesseract || brew upgrade tesseract
 after_success:
   - npm run report-cov
