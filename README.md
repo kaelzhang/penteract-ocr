@@ -1,27 +1,31 @@
-[![Build Status](https://travis-ci.org/kaelzhang/node-penteract.svg?branch=master)](https://travis-ci.org/kaelzhang/node-penteract)
-[![Coverage](https://codecov.io/gh/kaelzhang/node-penteract/branch/master/graph/badge.svg)](https://codecov.io/gh/kaelzhang/node-penteract)
+[![Build Status](https://travis-ci.org/kaelzhang/penteract-ocr.svg?branch=master)](https://travis-ci.org/kaelzhang/penteract-ocr)
+[![Coverage](https://codecov.io/gh/kaelzhang/penteract-ocr/branch/master/graph/badge.svg)](https://codecov.io/gh/kaelzhang/penteract-ocr)
 <!-- optional appveyor tst
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/kaelzhang/node-penteract?branch=master&svg=true)](https://ci.appveyor.com/project/kaelzhang/node-penteract)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/kaelzhang/penteract-ocr?branch=master&svg=true)](https://ci.appveyor.com/project/kaelzhang/penteract-ocr)
 -->
 <!-- optional npm version
-[![NPM version](https://badge.fury.io/js/node-penteract.svg)](http://badge.fury.io/js/node-penteract)
+[![NPM version](https://badge.fury.io/js/penteract-ocr.svg)](http://badge.fury.io/js/penteract-ocr)
 -->
 <!-- optional npm downloads
-[![npm module downloads per month](http://img.shields.io/npm/dm/node-penteract.svg)](https://www.npmjs.org/package/node-penteract)
+[![npm module downloads per month](http://img.shields.io/npm/dm/penteract-ocr.svg)](https://www.npmjs.org/package/penteract-ocr)
 -->
 <!-- optional dependency status
-[![Dependency Status](https://david-dm.org/kaelzhang/node-penteract.svg)](https://david-dm.org/kaelzhang/node-penteract)
+[![Dependency Status](https://david-dm.org/kaelzhang/penteract-ocr.svg)](https://david-dm.org/kaelzhang/penteract-ocr)
 -->
 
-# penteract
+# @penteract/ocr
 
-<img align="right" alt="" src="https://raw.githubusercontent.com/kaelzhang/node-penteract/master/penteract.gif" />
+**WORKING IN PROGRESS**
 
-The native Node.js bindings to the [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) project.
+<img align="right" alt="" src="https://raw.githubusercontent.com/kaelzhang/penteract-ocr/master/penteract.gif" />
 
-- Using Node.js bindings, avoid spawning `tesseract` command line.  
+The native Node.js addon for Penteract OCR engine.
+
+- [Attension-based](https://arxiv.org/abs/1704.03549) neural networks that you can train your own resources.
+- Using Node.js bindings, avoid spawning any child processes.
 - Asynchronous I/O: Image reading and processing in insulated event loop backed by [libuv](https://github.com/libuv/libuv).
 - Support to read image data from JavaScript `buffer`s.
+- Support electron.
 
 Contributions are welcome.
 
@@ -29,16 +33,10 @@ Contributions are welcome.
 
 First of all, a g++ 4.9 compiler is required.
 
-Before install `penteract`, the following dependencies should be installed
-
-```sh
-$ brew install pkg-config tesseract # mac os
-```
-
 Then npm install
 
 ```sh
-$ npm install penteract
+$ npm i @penteract/ocr
 ```
 
 ### To Use with Electron
@@ -69,10 +67,7 @@ For now, it is recommended to use `penteract@latest`
 ### Recognize an Image Buffer
 
 ```js
-import {
-  recognize
-} from 'penteract'
-
+import {recognize} from 'penteract'
 import fs from 'fs-extra'
 
 const filepath = path.join(__dirname, 'test', 'fixtures', 'penteract.jpg')
@@ -180,3 +175,4 @@ $ sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 ## License
 
 MIT
+

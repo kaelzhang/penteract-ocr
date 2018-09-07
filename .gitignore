@@ -1,8 +1,6 @@
-# cmake
-/cmake-build-debug
-
 # babel dist
 /lib
+/cmake-build-debug
 
 # Numerous always-ignore extensions
 *.bak
@@ -25,6 +23,7 @@ nohup.out
 .nyc_output
 coverage.lcov
 package-lock.json
+*.tgz
 
 # OS or Editor folders
 .DS_Store
@@ -34,8 +33,8 @@ package-lock.json
 .settings
 .tmproj
 *.esproj
-*.sublime-project
-*.sublime-workspace
+*.*-project
+*.*-workspace
 nbproject
 thumbs.db
 
@@ -55,6 +54,14 @@ reference/
 jscoverage_lib/
 temp/
 tmp/
+
+# Java
+.mvn
+.gradle
+.vscode
+.project
+.classpath
+/gradle
 
 # codecov.io
 coverage/

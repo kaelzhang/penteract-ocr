@@ -1,18 +1,6 @@
 language: node_js
 sudo: false
 node_js:
-  - "7"
+  - "6"
   - "8"
-# addons:
-#   apt:
-#     sources:
-#       - ubuntu-toolchain-r-test
-#     packages:
-#       - tesseract-ocr
-#       - g++-4.9
-os:
-  - osx
-before_install:
-  - bash install/osx.sh
-after_success:
-  - npm run report-cov
+  - "10"

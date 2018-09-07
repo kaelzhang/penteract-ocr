@@ -1,72 +1,52 @@
 {
-  "name": "penteract",
-  "version": "0.4.0",
-  "description": "The native Node.js bindings to the Tesseract OCR project.",
-  "gypfile": true,
-  "main": "lib/index.js",
-  "module": "src/index.js",
-  "devDependencies": {
-    "ava": "^0.16.0",
-    "babel-cli": "^6.16.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-syntax-trailing-function-commas": "^6.13.0",
-    "babel-plugin-transform-async-to-generator": "^6.22.0",
-    "babel-plugin-transform-class-properties": "^6.16.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.16.0",
-    "babel-plugin-transform-exponentiation-operator": "^6.8.0",
-    "babel-plugin-transform-inline-environment-variables": "^6.8.0",
-    "babel-plugin-transform-object-rest-spread": "^6.16.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-register": "^6.24.1",
-    "codecov": "^2.3.0",
-    "fs-extra": "^4.0.1",
-    "nyc": "^11.1.0",
-    "tesseract.js": "^1.0.10"
-  },
-  "dependencies": {
-    "babel-runtime": "^6.23.0",
-    "nan": "^2.6.2"
-  },
+  "name": "@penteract/ocr",
+  "version": "0.0.1",
+  "description": "Node.js addon for penteract OCR engine.",
+  "main": "addon/index.js",
   "scripts": {
-    "build": "npm run build-cc && npm run build-js",
-    "build-cc": "node-gyp build",
-    "build-js": "BABEL_ENV=production babel src --out-dir lib",
-    "// test": "lldb -- /usr/local/bin/node ./node_modules/.bin/ava --verbose --timeout=10s",
-    "test": "npm run build-cc && npm run test-js",
-    "test-js": "nyc ava --verbose --timeout=10s",
-    "prepublish": "npm run build",
-    "report-cov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "build:cc": "node-gyp build",
+    "test": "nyc ava --timeout=10s",
+    "test-no-report": "NODE_DEBUG=penteract-ocr nyc ava --timeout=10s --verbose",
+    "lint": "eslint .",
+    "posttest": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
+  "files": [
+    "src/"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaelzhang/node-penteract.git"
-  },
-  "ava": {
-    "require": "babel-register",
-    "babel": {
-      "babelrc": true
-    },
-    "files": [
-      "test/*.js"
-    ]
+    "url": "git://github.com/kaelzhang/penteract-ocr.git"
   },
   "keywords": [
-    "tesseract",
-    "ocr",
-    "c++",
+    "penteract-ocr",
     "penteract",
+    "ocr",
+    "LSTM",
+    "neural-network",
+    "node",
+    "c++ addon",
     "n-api",
     "ocr-engine",
     "tesseract-ocr",
     "optical-character-recognition"
   ],
-  "author": "kael",
+  "engines": {
+    "node": ">= 6"
+  },
+  "ava": {
+    "babel": false
+  },
+  "author": "kaelzhang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kaelzhang/node-penteract/issues"
+    "url": "https://github.com/kaelzhang/penteract-ocr/issues"
   },
-  "engine": {
-    "node": ">=8.3.0"
-  },
-  "homepage": "https://github.com/kaelzhang/node-penteract#readme"
+  "devDependencies": {
+    "ava": ">= 1.0.0-beta.6",
+    "codecov": "^3.0.2",
+    "nyc": "^12.0.2",
+    "eslint-config-ostai": "^1.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint": "^5.1.0"
+  }
 }
