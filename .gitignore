@@ -1,6 +1,7 @@
 # babel dist
 /lib
 /cmake-build-debug
+/ref
 
 # Numerous always-ignore extensions
 *.bak

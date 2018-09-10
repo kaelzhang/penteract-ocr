@@ -21,11 +21,11 @@
 
 The native Node.js addon for Penteract OCR engine.
 
-- [Attension-based](https://arxiv.org/abs/1704.03549) neural networks that you can train your own resources.
-- Using Node.js bindings, avoid spawning any child processes.
+- [Attension-based](https://arxiv.org/abs/1704.03549) neural networks so that penteract-ocr could handle not only Traditional Optical Character Recognition (OCR) tasks, but also the problems of recognizing natural scenes, such as distorted or blured images and captchas.
+- Use Node.js bindings and avoid spawning any child processes.
 - Asynchronous I/O: Image reading and processing in insulated event loop backed by [libuv](https://github.com/libuv/libuv).
 - Support to read image data from JavaScript `buffer`s.
-- Support electron.
+- Support electron that you could read things inside a wrapped browser.
 
 Contributions are welcome.
 
